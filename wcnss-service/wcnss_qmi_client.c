@@ -44,17 +44,18 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 static qmi_client_type dms_qmi_client;
 static int dms_init_done = FAILED;
 
+
 int wcnss_init_qmi()
 {
 	qmi_client_error_type qmi_client_err;
 
 	ALOGE("%s: Initialize wcnss QMI Interface", __func__);
-        qmi_client_os_params dms_os_params;
+	qmi_client_os_params dms_os_params;
 
-	memset(&dms_os_params, 0, sizeof(qmi_client_os_params));
-	qmi_client_err = qmi_client_init_instance(dms_get_service_object_v01(),
-			QMI_CLIENT_INSTANCE_ANY, NULL, NULL,
-			&dms_os_params, 5000, &dms_qmi_client);
+    memset(&dms_os_params, 0, sizeof(qmi_client_os_params));
+    qmi_client_err = qmi_client_init_instance(dms_get_service_object_v01(),
+                   QMI_CLIENT_INSTANCE_ANY, NULL, NULL,
+                   &dms_os_params, 5000, &dms_qmi_client);
 
 	if (qmi_client_err != QMI_NO_ERR){
 		ALOGE("%s: Error while Initializing QMI Client: %d",
